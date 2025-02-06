@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Miracast</string>
+    <string name="media_route_menu_title">Cast</string>
+    <string name="discover_peers_button">Scan</string>
+    <string name="cast">Available devices</string>
+    <string name="empty_message">No devices found.</string>
+</resources>

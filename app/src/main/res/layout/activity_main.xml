@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:id="@+id/textView"
+        android:text="@string/cast"
+        android:textSize="27dp"
+        android:layout_width="fill_parent"
+         android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/no_device_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+
+        android:text="@string/empty_message"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:textColor="@color/black" />
+
+    <ListView
+        android:id="@+id/device_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:divider="#000"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="false"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+</LinearLayout>
