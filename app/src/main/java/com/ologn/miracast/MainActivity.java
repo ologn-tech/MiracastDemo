@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     ListView mDeviceListView;
     TextView mEmptyText;
 
-    private boolean isConnectAgain = false;
+//    private boolean isConnectAgain = false;
     private String statusConnect;
 
     private final List<String> deviceList = new ArrayList<>();
@@ -86,7 +86,8 @@ public class MainActivity extends AppCompatActivity {
                 if (mRouteSelected.getName() != curentRouteInfo.getName()) {
                     mRouter.selectRoute(ROUTE_TYPE_REMOTE_DISPLAY, mRouteSelected);
                 } else {
-                    showDisconnectDialog(mRouteSelected.getName().toString());
+                    if (statusConnect.equals("Connected"))
+                        showDisconnectDialog(mRouteSelected.getName().toString());
                 }
             }
         });
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
             update(CHANGE_ALL);
         }
-        isConnectAgain = true;
+//        isConnectAgain = true;
     }
 
 
@@ -141,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             unregisterReceiver(mReceiver);
             mRouter.removeCallback(mRouterCallback);
 
-            unscheduleUpdate();
+            unScheduleUpdate();
         }
     }
 
@@ -181,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void unscheduleUpdate() {
+    private void unScheduleUpdate() {
         if (mPendingChanges != 0) {
             mPendingChanges = 0;
             mHandler.removeCallbacks(mUpdateRunnable);
@@ -233,13 +234,13 @@ public class MainActivity extends AppCompatActivity {
         public void onRouteAdded(MediaRouter router, RouteInfo info) {
             scheduleUpdate(CHANGE_ROUTES);
             Log.d(TAG,"onRouteAdded "+info.toString());
-            if (curentRouteInfo.getName() != info.getName() && info.getName().toString().equals(getNameLastRouteConnected())){
-                Log.d(TAG,"Connect again\n" +getNameLastRouteConnected()+"\n"  + isConnectAgain);
-                if (isConnectAgain) {
-                    mRouter.selectRoute(ROUTE_TYPE_REMOTE_DISPLAY, info);
-                    isConnectAgain = false;
-                }
-            }
+//            if (curentRouteInfo.getName() != info.getName() && info.getName().toString().equals(getNameLastRouteConnected())){
+//                Log.d(TAG,"Connect again\n" +getNameLastRouteConnected()+"\n"  + isConnectAgain);
+//                if (isConnectAgain) {
+//                    mRouter.selectRoute(ROUTE_TYPE_REMOTE_DISPLAY, info);
+//                    isConnectAgain = false;
+//                }
+//            }
         }
 
         @Override
@@ -247,13 +248,13 @@ public class MainActivity extends AppCompatActivity {
             scheduleUpdate(CHANGE_ROUTES);
             Log.d(TAG,"onRouteChanged "+info.getName());
 
-            if (curentRouteInfo.getName() != info.getName() && info.getName().toString().equals(getNameLastRouteConnected())){
-                Log.d(TAG,"Connect again\n" +getNameLastRouteConnected()+"\n"  + isConnectAgain);
-                if (isConnectAgain) {
-                    mRouter.selectRoute(ROUTE_TYPE_REMOTE_DISPLAY, info);
-                    isConnectAgain = false;
-                }
-            }
+//            if (curentRouteInfo.getName() != info.getName() && info.getName().toString().equals(getNameLastRouteConnected())){
+//                Log.d(TAG,"Connect again\n" +getNameLastRouteConnected()+"\n"  + isConnectAgain);
+//                if (isConnectAgain) {
+//                    mRouter.selectRoute(ROUTE_TYPE_REMOTE_DISPLAY, info);
+//                    isConnectAgain = false;
+//                }
+//            }
         }
 
         @Override
