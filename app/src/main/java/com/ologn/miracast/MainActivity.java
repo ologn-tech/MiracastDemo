@@ -303,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
                 .setMessage("Are you sure you want to disconnect " +name +"?")
                 .setPositiveButton("Disconnect", (dialog, which) -> {
                     mRouter.selectRoute(MediaRouter.ROUTE_TYPE_LIVE_VIDEO,mRouter.getDefaultRoute());
+                    statusConnect = "Available";
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
                 .show();
