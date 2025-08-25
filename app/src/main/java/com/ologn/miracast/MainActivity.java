@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
     private void scheduleUpdate(int changes) {
         if (mStarted) {
             if (mPendingChanges == 0) {
-                mHandler.post(mUpdateRunnable);
+                mHandler.postDelayed(mUpdateRunnable, 2000);
             }
             mPendingChanges |= changes;
         }
