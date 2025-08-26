@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mRouteSelected.getName() != curentRouteInfo.getName()) {
                     mRouter.selectRoute(ROUTE_TYPE_REMOTE_DISPLAY, mRouteSelected);
                 } else {
-                    if (statusConnect.equals("Connected"))
+                    if (!statusConnect.equals("Connecting"))
                         showDisconnectDialog(mRouteSelected.getName().toString());
                 }
             }
